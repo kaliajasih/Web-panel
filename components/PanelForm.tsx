@@ -118,4 +118,3 @@ const PanelForm: React.FC<PanelFormProps> = ({ onSuccess }) => {
 };
 
 export default PanelForm;
-
