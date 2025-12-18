@@ -1,4 +1,6 @@
+
 import { PanelData, SuccessData } from '../types';
+import { MOCK_NODES, MOCK_EGGS } from '../constants';
 
 /**
  * PENTING UNTUK INTEGRASI API ASLI:
@@ -22,11 +24,20 @@ export const pterodactylService = {
     // Username menggunakan cleanName dan suffix random agar unik di database
     const username = `${cleanName}_${Math.random().toString(36).substring(2, 5)}`;
 
+    // Mendapatkan Nama Node dan Egg dari ID
+    const nodeName = MOCK_NODES.find(n => n.id.toString() === data.nodeId)?.name || 'Unknown Node';
+    const eggName = MOCK_EGGS.find(e => e.id.toString() === data.eggId)?.name || 'Unknown Egg';
+    
+    // Panel URL biasanya didapat dari konfigurasi sistem/environment
+    const panelUrl = "https://panel.example.com"; 
+
     return {
       username: username,
       password: password,
-      serverName: data.name
+      serverName: data.name,
+      nodeName: nodeName,
+      eggName: eggName,
+      panelUrl: panelUrl
     };
   }
 };
-
